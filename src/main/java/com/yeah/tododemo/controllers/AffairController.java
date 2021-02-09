@@ -57,7 +57,7 @@ public class AffairController {
 
     @GetMapping(value = "deleted_affairs")
     public List<DeletedAffair> deletedAffairs(){
-        return deletedAffairRepository.findAll();
+        return deletedAffairRepository.findAll(Sort.by(Sort.Direction.ASC, "affairDescription"));
     }
 
 
