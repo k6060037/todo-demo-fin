@@ -5,11 +5,13 @@ import com.yeah.tododemo.entity.DeletedAffair;
 import com.yeah.tododemo.repository.AffairRepository;
 import com.yeah.tododemo.repository.DeletedAffairRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,8 +38,9 @@ public class AffairController {
 
     @GetMapping(value = "affairs")
     public List<Affair> getAllAffairs(){
-        return affairRepository.findAll();
-
+        return affairRepository.findAll(Sort.by(Sort.Direction.DESC, "affairPriority"));
+        //Collections.reverse(affairs);
+        //return affairs;
     }
 
     @GetMapping(value = "delete_affair")
@@ -47,6 +50,7 @@ public class AffairController {
         deletedAffair.setAffairDescription(affair.getAffairDescription());
         deletedAffair.setAffairPriority(affair.getAffairPriority());
         deletedAffair.setId(affair.getId());
+        affairRepository.deleteById(affair.getId());
         deletedAffairRepository.save(deletedAffair);
         return affair;
     }
