@@ -12,7 +12,7 @@ import java.util.UUID;
 @Table(name = "deleted_affairs")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class DelAffair {
+public class DeletedAffair {
     @Id
     @Column(name = "affair_id")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")

@@ -1,7 +1,9 @@
 package com.yeah.tododemo.controllers;
 
 import com.yeah.tododemo.entity.Affair;
+import com.yeah.tododemo.entity.DeletedAffair;
 import com.yeah.tododemo.repository.AffairRepository;
+import com.yeah.tododemo.repository.DeletedAffairRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AffairController {
     private final AffairRepository affairRepository;
+    private final DeletedAffairRepository deletedAffairRepository;
 
     @GetMapping(value = "affair")
     public Affair getAffair(@RequestParam(name = "id") UUID id) {
@@ -40,8 +43,17 @@ public class AffairController {
     @GetMapping(value = "delete_affair")
     public Affair copyAffair(@RequestParam(name = "id") UUID id) {
         Affair affair = affairRepository.findById(id).orElseThrow();
-        affairRepository.delete(affair);
+        DeletedAffair deletedAffair = new DeletedAffair();
+        deletedAffair.setAffairDescription(affair.getAffairDescription());
+        deletedAffair.setAffairPriority(affair.getAffairPriority());
+        deletedAffair.setId(affair.getId());
+        deletedAffairRepository.save(deletedAffair);
         return affair;
+    }
+
+    @GetMapping(value = "deleted_affairs")
+    public List<DeletedAffair> deletedAffairs(){
+        return deletedAffairRepository.findAll();
     }
 
 

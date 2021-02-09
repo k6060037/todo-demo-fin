@@ -8,7 +8,7 @@
         <createTable tableName="deleted_affairs">
             <column name="affair_id" type="uuid">
                 <constraints primaryKey="true"
-                             primaryKeyName="del_affair_pk"/>
+                             primaryKeyName="deleted_affair_pk"/>
             </column>
             <column name="affair_description" type="varchar(25)"/>
             <column name="affair_priority" type="integer(1)"/>
