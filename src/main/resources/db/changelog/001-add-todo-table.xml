@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="001-mlukashenko" author="mlukashenko">
+        <createTable tableName="affairs">
+            <column name="affair_id" type="uuid">
+                <constraints primaryKey="true"
+                             primaryKeyName="affair_pk"/>
+            </column>
+            <column name="affair_description" type="varchar(25)"/>
+            <column name="affair_priority" type="integer(1)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
