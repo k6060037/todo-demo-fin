@@ -43,6 +43,11 @@ public class AffairController {
         //return affairs;
     }
 
+    @GetMapping(value = "affair_by_priority")
+    public List<Affair> getUserByPassport(@RequestParam(name = "priority") int priority) {
+        return affairRepository.findByAffairPriorityGreaterThan(priority);
+    }
+
     @GetMapping(value = "delete_affair")
     public Affair copyAffair(@RequestParam(name = "id") UUID id) {
         Affair affair = affairRepository.findById(id).orElseThrow();
