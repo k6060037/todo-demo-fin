@@ -10,8 +10,8 @@
                 <constraints primaryKey="true"
                              primaryKeyName="affair_pk"/>
             </column>
-            <column name="affair_description" type="varchar(25)"/>
-            <column name="affair_priority" type="integer(1)"/>
+            <column name="description" type="varchar(25)"/>
+            <column name="priority" type="integer(1)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

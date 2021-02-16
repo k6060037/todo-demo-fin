@@ -15,12 +15,10 @@ import java.util.UUID;
 public class DeletedAffair {
     @Id
     @Column(name = "affair_id")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid2")
     @EqualsAndHashCode.Include
     private UUID id;
-    @Column(name = "affair_description")
+    @Column(name = "description")
     private String affairDescription;
-    @Column(name="affair_priority")
+    @Column(name="priority")
     private int affairPriority;
 }

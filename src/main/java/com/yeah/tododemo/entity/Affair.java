@@ -19,8 +19,8 @@ public class Affair {
     @GeneratedValue(generator = "uuid2")
     @EqualsAndHashCode.Include
     private UUID id;
-    @Column(name = "affair_description")
+    @Column(name = "description")
     private String affairDescription;
-    @Column(name="affair_priority")
+    @Column(name="priority")
     private int affairPriority;
 }
